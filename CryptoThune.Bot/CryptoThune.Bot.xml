@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CryptoThune.Bot</name>
+    </assembly>
+    <members>
+        <member name="T:CryptoThune.Bot.Program">
+            <summary>
+            Main
+            </summary>
+        </member>
+        <member name="T:CryptoThune.Bot.Program.Options">
+            <summary>
+            Options thqt can passed to the progrqm
+            </summary>
+        </member>
+        <member name="M:CryptoThune.Bot.Program.Main(System.String[])">
+            <summary>
+            The entry point
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
