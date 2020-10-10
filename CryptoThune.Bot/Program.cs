@@ -14,7 +14,7 @@ namespace CryptoThune.Bot
     {
         private static readonly Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         /// <summary>
-        /// Options thqt can passed to the progrqm
+        /// Options that can be passed to the program
         /// </summary>
         public class Options
         {

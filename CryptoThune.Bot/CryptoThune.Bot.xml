@@ -11,7 +11,7 @@
         </member>
         <member name="T:CryptoThune.Bot.Program.Options">
             <summary>
-            Options thqt can passed to the progrqm
+            Options thqt can passed to the program
             </summary>
         </member>
         <member name="M:CryptoThune.Bot.Program.Main(System.String[])">
