@@ -1,6 +1,7 @@
 ﻿using System;
 using CommandLine;
-using Cryptothune.Net;
+using CryptoThune.Net;
+using CryptoThune.Strategy;
 using NLog;
 
 
@@ -54,7 +55,7 @@ namespace CryptoThune.Bot
                         {
                             var bot = new BotThune<ExchangeFake>();
                             bot.MarketExchange.Deposit(295.0);
-                            var strategy = new Funiol(1.0, 7.0, 0.6);
+                            var strategy = new ZOB(1.0, 7.0, 0.6);
                             bot.AddStrategy(strategy, "XTZEUR", 20.0 );
                             bot.AddStrategy(strategy, "XRPEUR", 80.0 );
                             bot.Sim(startDate: new DateTime(2020, 09, 07));
@@ -62,7 +63,7 @@ namespace CryptoThune.Bot
                         else
                         {
                              var bot = new BotThune<ExchangeKraken>();
-                            var strategy = new Funiol(1.0, 7.0, 0.6);
+                            var strategy = new ZOB(1.0, 7.0, 0.6);
                             bot.AddStrategy(strategy, "XTZEUR", 20.0);
                             bot.AddStrategy(strategy, "BTCEUR", 5.0);
                             bot.AddStrategy(strategy, "XRPEUR", 75.0 );
