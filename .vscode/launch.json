@@ -5,7 +5,53 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Debug (Output)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+            "args": 
+            [
+                "-dry",
+                "-o D:/KcDDevVault/CryptoThune/Output/"
+            ],
+            "cwd": "${workspaceFolder}/CryptoThune.Bot",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },        
+        {
+            "name": "Debug (Simulation)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+            "args": 
+            [
+                "-sim"
+            ],
+            "cwd": "${workspaceFolder}/CryptoThune.Bot",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },    
+        {
+            "name": "Debug (Run)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CryptoThune.Bot",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Debug (DryRun)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",

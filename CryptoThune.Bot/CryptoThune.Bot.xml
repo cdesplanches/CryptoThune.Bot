@@ -9,10 +9,40 @@
             Main
             </summary>
         </member>
+        <member name="F:CryptoThune.Bot.Program.Logger">
+            <summary>
+            NLogger
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:CryptoThune.Bot.Program.Options">
             <summary>
             Options that can be passed to the program
             </summary>
+        </member>
+        <member name="P:CryptoThune.Bot.Program.Options.Verbose">
+            <summary>
+            Set the verbosity.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CryptoThune.Bot.Program.Options.Simulate">
+            <summary>
+            Do a simulation
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CryptoThune.Bot.Program.Options.DryRun">
+            <summary>
+            Make a dry run. Same function, not actions
+            </summary>
+            <value></value>            
+        </member>
+        <member name="P:CryptoThune.Bot.Program.Options.Output">
+            <summary>
+            The output directory
+            </summary>
+            <value></value>
         </member>
         <member name="M:CryptoThune.Bot.Program.Main(System.String[])">
             <summary>

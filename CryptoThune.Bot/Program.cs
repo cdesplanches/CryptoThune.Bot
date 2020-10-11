@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using CommandLine;
 using CryptoThune.Net;
 using CryptoThune.Strategy;
@@ -12,20 +13,40 @@ namespace CryptoThune.Bot
     /// </summary>
     class Program
     {
+        /// <summary>
+        /// NLogger
+        /// </summary>
+        /// <returns></returns>
         private static readonly Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Options that can be passed to the program
         /// </summary>
         public class Options
         {
+            /// <summary>
+            /// Set the verbosity.
+            /// </summary>
+            /// <value></value>
             [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
             public bool Verbose { get; set; }
-
+            /// <summary>
+            /// Do a simulation
+            /// </summary>
+            /// <value></value>
             [Option('s', "sim", Required = false, HelpText = "Launch a simulation.")]
             public bool Simulate { get; set; }
-
+            /// <summary>
+            /// Make a dry run. Same function, not actions
+            /// </summary>
+            /// <value></value>            
             [Option('d', "dry", Default = false, Required = false, HelpText = "Run.")]
             public bool DryRun { get; set; }
+            /// <summary>
+            /// The output directory
+            /// </summary>
+            /// <value></value>
+            [Option('o', "output", Default = false, Required = false, HelpText = "Set the output directory.")]
+            public string Output { get; set; }
         }
         /// <summary>
         /// The entry point
@@ -37,7 +58,9 @@ namespace CryptoThune.Bot
             Parser.Default.ParseArguments<Options>(args)
                    .WithParsed<Options>(o =>
                    {
-                        Console.WriteLine("BotRunner v=1.0");
+                        Console.WriteLine("CryptoThune.Bot v=1.0");
+                        Console.WriteLine("by cdesplanches");
+                        Console.WriteLine("kcdesplanches@gmail.com");
 
                         var config = new NLog.Config.LoggingConfiguration();
 
@@ -49,6 +72,21 @@ namespace CryptoThune.Bot
                         if (o.Verbose)
                         {
                             Console.WriteLine($"Verbosity: ON");
+                        }
+
+                        if ( !String.IsNullOrEmpty(o.Output) )
+                        {
+                            try
+                            {
+                                //Set the current directory.
+                                Directory.SetCurrentDirectory(o.Output.Trim());
+                            }
+                            catch (DirectoryNotFoundException e)
+                            {
+                                Console.WriteLine("The specified directory does not exist. {0}", e);
+                            }
+
+                            Logger.Info("Output Directory is now set to: " + Directory.GetCurrentDirectory());
                         }
 
                         if ( o.Simulate )
