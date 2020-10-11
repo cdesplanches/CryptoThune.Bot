@@ -20,12 +20,9 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="CryptoThune.Net" Version="1.0.0" />
+    <PackageReference Include="CryptoThune.Strategy.ZOB" Version="1.0.0" />
     <PackageReference Include="NLog" Version="4.7.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Cryptothune.Net\CryptoThune.Net\CryptoThune.Net.csproj" />
-    <ProjectReference Include="..\..\CryptoThune.Strategy.ZOB\CryptoThune.Strategy.ZOB\CryptoThune.Strategy.ZOB.csproj" />
   </ItemGroup>
 
 </Project>
