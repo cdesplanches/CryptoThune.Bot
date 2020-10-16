@@ -44,6 +44,18 @@
             </summary>
             <value></value>
         </member>
+        <member name="P:CryptoThune.Bot.Program.Options.BeginDate">
+            <summary>
+            The start date of the simulation
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CryptoThune.Bot.Program.Options.EndDate">
+            <summary>
+            The start date of the simulation
+            </summary>
+            <value></value>
+        </member>
         <member name="M:CryptoThune.Bot.Program.Main(System.String[])">
             <summary>
             The entry point

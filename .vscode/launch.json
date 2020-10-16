@@ -30,7 +30,9 @@
             "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
             "args": 
             [
-                "-sim"
+                "-sim",
+                "-o D:/KcDDevVault/CryptoThune/Output/",
+                "-b 2020-10-11"
             ],
             "cwd": "${workspaceFolder}/CryptoThune.Bot",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console

@@ -45,8 +45,20 @@ namespace CryptoThune.Bot
             /// The output directory
             /// </summary>
             /// <value></value>
-            [Option('o', "output", Default = false, Required = false, HelpText = "Set the output directory.")]
+            [Option('o', "output", Required = false, HelpText = "Set the output directory.")]
             public string Output { get; set; }
+            /// <summary>
+            /// The start date of the simulation
+            /// </summary>
+            /// <value></value>
+            [Option('b', "begindate", Required = false, HelpText = "Set the begin date of the simulation.")]
+            public DateTime? BeginDate { get; set; }
+            /// <summary>
+            /// The start date of the simulation
+            /// </summary>
+            /// <value></value>
+            [Option('e', "enddate", Required = false, HelpText = "Set the end date of the simulation.")]
+            public DateTime? EndDate { get; set; }
         }
         /// <summary>
         /// The entry point
@@ -96,11 +108,12 @@ namespace CryptoThune.Bot
                             var strategy = new ZOB(1.0, 7.0, 0.6);
                             bot.AddStrategy(strategy, "XTZEUR", 20.0 );
                             bot.AddStrategy(strategy, "XRPEUR", 80.0 );
-                            bot.Sim(startDate: new DateTime(2020, 09, 07));
+
+                            bot.Sim(startDate: o.BeginDate, endDate: o.EndDate);
                         }
                         else
                         {
-                             var bot = new BotThune<ExchangeKraken>();
+                            var bot = new BotThune<ExchangeKraken>();
                             var strategy = new ZOB(1.0, 7.0, 0.6);
                             bot.AddStrategy(strategy, "XTZEUR", 20.0);
                             bot.AddStrategy(strategy, "BTCEUR", 5.0);
