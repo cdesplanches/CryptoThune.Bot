@@ -105,9 +105,10 @@ namespace CryptoThune.Bot
                         {
                             var bot = new BotThune<ExchangeFake>();
                             bot.MarketExchange.Deposit(295.0);
-                            var strategy = new ZOB(1.0, 7.0, 0.6);
-                            bot.AddStrategy(strategy, "XTZEUR", 20.0 );
-                            bot.AddStrategy(strategy, "XRPEUR", 80.0 );
+                            var strategy1 = new ZOB(2.0, 4.0, 0.5);
+                            bot.AddStrategy(strategy1, "XTZEUR", 20.0 );
+                            var strategy2 = new ZOB(1.0, 7.0, 0.6);
+                            bot.AddStrategy(strategy2, "XRPEUR", 80.0 );
 
                             bot.Sim(startDate: o.BeginDate, endDate: o.EndDate);
                         }

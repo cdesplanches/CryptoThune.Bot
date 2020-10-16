@@ -16,6 +16,9 @@
       <Content Include=".\credentials" Condition="Exists('.\credentials')">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <Content Include=".\portfolio" Condition="Exists('.\portfolio')">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
   </ItemGroup>
 
   <ItemGroup>
