@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 using CommandLine;
 using CryptoThune.Net;
 using CryptoThune.Strategy;
@@ -101,24 +104,43 @@ namespace CryptoThune.Bot
                             Logger.Info("Output Directory is now set to: " + Directory.GetCurrentDirectory());
                         }
 
+
+
+                        var builder = new ConfigurationBuilder()
+                                    .AddJsonFile("portfolio", optional: false, reloadOnChange: true)
+                                    .Build();
+                        var assets = builder.GetSection("Assets")
+                                .GetChildren()
+                                .ToList()
+                                .Select(x => new {
+                                    Asset = x.GetValue<string>("Asset"),
+                                    Weight = x.GetValue<double>("Weight"),
+                                    Threshold = x.GetValue<double>("Threshold"),
+                                    Ruptor = x.GetValue<double>("Ruptor"),
+                                    Probability = x.GetValue<double>("Probability"),
+                                });
+
                         if ( o.Simulate )
                         {
+                           
                             var bot = new BotThune<ExchangeFake>();
                             bot.MarketExchange.Deposit(295.0);
-                            var strategy1 = new ZOB(2.0, 4.0, 0.5);
-                            bot.AddStrategy(strategy1, "XTZEUR", 20.0 );
-                            var strategy2 = new ZOB(1.0, 7.0, 0.6);
-                            bot.AddStrategy(strategy2, "XRPEUR", 80.0 );
+                            foreach ( var ast in assets )
+                            {
+                                var str = new ZOB(ast.Threshold, ast.Ruptor, ast.Probability);
+                                bot.AddStrategy(str, ast.Asset, ast.Weight );    
+                            }                        
 
                             bot.Sim(startDate: o.BeginDate, endDate: o.EndDate);
                         }
                         else
                         {
                             var bot = new BotThune<ExchangeKraken>();
-                            var strategy = new ZOB(1.0, 7.0, 0.6);
-                            bot.AddStrategy(strategy, "XTZEUR", 20.0);
-                            bot.AddStrategy(strategy, "BTCEUR", 5.0);
-                            bot.AddStrategy(strategy, "XRPEUR", 75.0 );
+                            foreach ( var ast in assets )
+                            {
+                                var str = new ZOB(ast.Threshold, ast.Ruptor, ast.Probability);
+                                bot.AddStrategy(str, ast.Asset, ast.Weight );    
+                            }
                             if ( o.DryRun )
                             {
                                 bot.DryRun();
