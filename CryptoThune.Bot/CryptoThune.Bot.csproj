@@ -19,12 +19,15 @@
       <Content Include=".\portfolio" Condition="Exists('.\portfolio')">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <Content Include=".\portfolio_sim" Condition="Exists('.\portfolio_sim')">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
-    <PackageReference Include="CryptoThune.Net" Version="1.0.0" />
-    <PackageReference Include="CryptoThune.Strategy.ZOB" Version="1.0.0" />
+    <PackageReference Include="CryptoThune.Net" Version="1.0.2" />
+    <PackageReference Include="CryptoThune.Strategy.ZOB" Version="1.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0-rc.2.20475.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0-rc.2.20475.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0-rc.2.20475.5" />

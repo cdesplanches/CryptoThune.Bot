@@ -1,10 +1,14 @@
 ﻿using System;
-using System.Linq;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.Configuration;
 using CommandLine;
 using CryptoThune.Net;
+using CryptoThune.Net.Objects;
+using CryptoThune.Net.Interfaces;
 using CryptoThune.Strategy;
 using NLog;
 
@@ -104,12 +108,11 @@ namespace CryptoThune.Bot
                             Logger.Info("Output Directory is now set to: " + Directory.GetCurrentDirectory());
                         }
 
-
-
+                        var portfolio_name = o.Simulate ? "portfolio_sim" : "portfolio";
                         var builder = new ConfigurationBuilder()
-                                    .AddJsonFile("portfolio", optional: false, reloadOnChange: true)
+                                    .AddJsonFile(portfolio_name, optional: false, reloadOnChange: true)
                                     .Build();
-                        var assets = builder.GetSection("Assets")
+                        var assets = builder.GetSection("Portfolio")
                                 .GetChildren()
                                 .ToList()
                                 .Select(x => new {
@@ -120,14 +123,14 @@ namespace CryptoThune.Bot
                                     Probability = x.GetValue<double>("Probability"),
                                 });
 
+
                         if ( o.Simulate )
                         {
-                           
                             var bot = new BotThune<ExchangeFake>();
                             bot.MarketExchange.Deposit(295.0);
                             foreach ( var ast in assets )
                             {
-                                var str = new ZOB(ast.Threshold, ast.Ruptor, ast.Probability);
+                                ZOB str = new ZOB(ast.Threshold, ast.Ruptor, ast.Probability);
                                 bot.AddStrategy(str, ast.Asset, ast.Weight );    
                             }                        
 
@@ -141,6 +144,12 @@ namespace CryptoThune.Bot
                                 var str = new ZOB(ast.Threshold, ast.Ruptor, ast.Probability);
                                 bot.AddStrategy(str, ast.Asset, ast.Weight );    
                             }
+                            /*
+                            var strategy = new ZOB(1.0, 7.0, 0.6);
+                            bot.AddStrategy(strategy, "XTZEUR", 20.0);
+                            bot.AddStrategy(strategy, "BTCEUR", 5.0);
+                            bot.AddStrategy(strategy, "XRPEUR", 75.0 );
+                            */
                             if ( o.DryRun )
                             {
                                 bot.DryRun();

@@ -349,7 +349,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-portfolio
+nuget.config
+portfolio*
 credentials
 Output/
 
