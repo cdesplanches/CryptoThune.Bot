@@ -4,72 +4,71 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
-        {
-            "name": "Debug (Output)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
-            "args": 
-            [
-                "-dry",
-                "-o D:/KcDDevVault/CryptoThune/Output/"
-            ],
-            "cwd": "${workspaceFolder}/CryptoThune.Bot",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },        
-        {
-            "name": "Debug (Simulation)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
-            "args": 
-            [
-                "-sim",
-                "-o D:/KcDDevVault/CryptoThune/Output/",
-                "-b 2020-10-11"
-            ],
-            "cwd": "${workspaceFolder}/CryptoThune.Bot",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },    
-        {
-            "name": "Debug (Run)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/CryptoThune.Bot",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
-            "name": "Debug (DryRun)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/CryptoThune.Bot",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
+    {
+        "name": "Debug (Output)",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+        "args": [
+            "-dry",
+            "-o D:/KcDDevVault/CryptoThune/Output/"
+        ],
+        "cwd": "${workspaceFolder}/CryptoThune.Bot",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": "Debug (Simulation)",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+        "args": [
+            "-sim",
+            "-o D:/KcDDevVault/CryptoThune/Output/",
+            "-b 2020-10-11"
+        ],
+        "cwd": "${workspaceFolder}/CryptoThune.Bot",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": "Debug (Run)",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/CryptoThune.Bot",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": "Debug (DryRun)",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/CryptoThune.Bot/bin/Debug/netcoreapp3.1/CryptoThune.Bot.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/CryptoThune.Bot",
+        "console": "internalConsole",
+        "stopAtEntry": false
+    },
+    {
+        "name": ".NET Core Attach",
+        "type": "coreclr",
+        "request": "attach",
+        "processId": "${command:pickProcess}"
+    },
+    {
+        "name": "Docker .NET Core Launch",
+        "type": "docker",
+        "request": "launch",
+        "preLaunchTask": "docker-run: debug",
+        "netCore": {
+            "appProject": "${workspaceFolder}/CryptoThune.Bot/CryptoThune.Bot.csproj"
         }
-    ]
+    }
+]
 }
